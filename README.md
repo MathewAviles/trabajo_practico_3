@@ -146,6 +146,12 @@ python model.py
 * Jorge Brito
 
 ---
+## 🔄 Trabajo Colaborativo
+
+El proyecto se desarrolló utilizando GitHub mediante el uso de ramas (branches) y Pull Requests, permitiendo integrar el trabajo de cada miembro del equipo de forma organizada y controlada.
+## 📊 Valor del Proyecto
+
+Este análisis permite comprender el comportamiento del ranking FIFA y demuestra cómo los datos pueden ser utilizados para generar conocimiento útil y predicciones en el ámbito deportivo.
 
 ## 📌 Conclusión
 
