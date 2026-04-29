@@ -15,3 +15,11 @@ Este proyecto consiste en una API construida con FastAPI para analizar el datase
    - **Transformación:** Se aseguraron los tipos de datos numéricos.
    - **Adaptación:** Se creó la columna `rank_change` para calcular la diferencia de posiciones respecto al mes anterior.
    - El resultado se guardó en `fifa_ranking_cleaned.csv`.
+
+3. **Análisis Exploratorio de Datos (EDA):**
+   - Se implementó el script `eda_analysis.py`.
+   - **Estadísticas:** El promedio global de puntos es de ~1220 pts.
+   - **Patrones por Asociación:** CONMEBOL lidera con el promedio de puntos más alto (1554 pts), seguida por UEFA (1380 pts).
+   - **Dinámica de Ranking:** Equipos como Escocia y Azerbaiyán mostraron el mayor crecimiento (+5 posiciones).
+   - **Anomalías:** No se encontraron variaciones de puntos extremas, lo que sugiere consistencia en los datos.
+
