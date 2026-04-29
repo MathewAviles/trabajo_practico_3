@@ -1,76 +1,154 @@
-# Proyecto de Análisis de Datos FIFA 2022 - FastAPI
+# 📊 Proyecto de Análisis de Datos – FIFA Ranking 2022
 
-Este proyecto consiste en una API construida con FastAPI para analizar el dataset de rankings de la FIFA de 2022. Todo el código fuente está debidamente comentado en español.
+Este proyecto realiza un análisis completo del dataset de rankings FIFA 2022, incluyendo limpieza de datos, análisis exploratorio (EDA), visualización y un modelo de Machine Learning para identificar patrones entre el ranking y los puntos de cada selección.
 
-## Estructura del Proyecto
+---
 
-- `data_processing.py`: Script para la limpieza y transformación de datos.
-- `eda_analysis.py`: Análisis exploratorio de datos para identificar patrones y anomalías.
-- `visualizations.py`: Generador de gráficos interactivos usando Plotly.
-- `static/`: Carpeta que contiene las visualizaciones segmentadas (HTML y JS por separado).
-- `fifa_ranking_cleaned.csv`: Dataset procesado listo para el análisis.
-Este proyecto es una plataforma de análisis de datos basada en el ranking mundial de la FIFA de octubre de 2022. Utiliza **FastAPI** para el backend y **Plotly** para visualizaciones interactivas de alto impacto.
+## 🎯 Objetivo
 
-**Autor de los cambios:** Mathew Avilés
+Analizar el comportamiento de los rankings FIFA y descubrir:
 
-## 📂 Estructura del Proyecto
+* Relación entre ranking y puntos
+* Equipos con mayor crecimiento y caída
+* Diferencias entre confederaciones
+* Predicción de puntos mediante Machine Learning
 
-2. **Procesamiento de datos:**
-   - **Limpieza:** Eliminación de duplicados y valores nulos.
-   - **Transformación:** Conversión de tipos de datos y creación de la métrica `rank_change`.
-   - El código ha sido comentado íntegramente en español para facilitar su mantenimiento.
+---
 
-3. **Análisis Exploratorio de Datos (EDA):**
-   - Identificación de promedios por confederación (CONMEBOL liderando en puntaje).
-   - Análisis de equipos con mayor crecimiento (+5 posiciones para Escocia y Azerbaiyán).
-   - Validación de consistencia en los datos (sin anomalías extremas).
+## 📁 Dataset
 
-4. **Visualización de datos (Segmentada):**
-   - Se implementó una arquitectura limpia separando el **HTML** del **JavaScript**.
-   - Los archivos se encuentran en la carpeta `static/`.
-   - Se generaron mapas globales, diagramas de caja por confederación y rankings de los 10 mejores equipos.
-- `data_processing.py`: Script de limpieza y transformación de datos (Python).
-- `eda_analysis.py`: Análisis exploratorio para identificar patrones y anomalías.
-- `visualizations.py`: Generador de gráficos interactivos (Mapa, BoxPlot, Barras).
-- `static/`: Contiene los archivos HTML finales listos para ser visualizados.
-- `fifa_ranking_cleaned.csv`: Dataset optimizado tras el procesamiento.
-- `venv/`: Entorno virtual con las dependencias del proyecto.
+Se utilizó un dataset de rankings FIFA que contiene:
 
-## 🚀 Guía Paso a Paso
+* `team`: Nombre del equipo
+* `rank`: Ranking actual
+* `previous_rank`: Ranking anterior
+* `points`: Puntos actuales
+* `previous_points`: Puntos anteriores
+* `confederation`: Confederación
 
-### 1. Configuración del Entorno
-Se creó un entorno virtual de Python y se instalaron las librerías necesarias para el análisis de datos:
-- `pandas`: Para el manejo de estructuras de datos.
-- `plotly`: Para la generación de gráficos interactivos.
-- `fastapi` y `uvicorn`: Para la futura implementación de la API.
+---
 
-### 2. Procesamiento de Datos (Limpieza)
-El dataset original fue sometido a un proceso de curación:
-- Eliminación de duplicados y valores nulos.
-- Cálculo de la métrica **Cambio de Ranking** (diferencia con el mes anterior).
-- Normalización de tipos de datos numéricos.
-- **Cómo ejecutar:** `python data_processing.py`
+## ⚙️ Procesamiento de Datos
 
-### 3. Análisis Exploratorio (EDA)
-Se realizó un estudio detallado que reveló:
-- **Liderazgo Regional:** CONMEBOL posee el promedio de puntos más alto por confederación.
-- **Progreso:** Identificación de equipos con mayor ascenso en la tabla.
-- **Consistencia:** Verificación de que no existen anomalías en los puntajes.
-- **Cómo ejecutar:** `python eda_analysis.py`
+Se realizó limpieza y transformación del dataset:
 
-### 4. Visualización de Datos (Plotly)
-Se generaron tres tableros interactivos con etiquetas totalmente en **español**:
-- **Mapa Global:** Distribución de puntos en el mapa mundial con escala de colores.
-- **Distribución por Confederación:** Comparativa de la dispersión de puntos por región.
-- **Top 10 Mundial:** Gráfico de barras con las mejores selecciones actuales.
-- **Cómo ejecutar:** `python visualizations.py`
+* Eliminación de duplicados
+* Eliminación de valores nulos
+* Conversión de tipos de datos
+* Creación de nueva variable:
 
-## 📊 Cómo ver los resultados
+  * `rank_change = previous_rank - rank`
 
-Para ver las gráficas interactivas, simplemente abre los archivos dentro de la carpeta `static/` con tu navegador favorito (Chrome, Edge, Firefox):
+👉 Ejecutar:
 
-1.  **Mapa Mundial:** `static/mapa_global.html`
-2.  **Análisis de Confederaciones:** `static/distribucion_asoc.html`
-3.  **Ranking Top 10:** `static/top_10.html`
+```bash
+python data_processing.py
+```
 
-*Nota: Al pasar el cursor sobre los gráficos, podrás ver detalles específicos como el nombre del Equipo y sus Puntos exactos.*
+---
+
+## 📊 Análisis Exploratorio de Datos (EDA)
+
+Se realizó un análisis detallado que permitió identificar:
+
+* Top 10 equipos del mundo
+* Equipos que más subieron en ranking
+* Equipos que más bajaron
+* Promedio de puntos por ranking
+* Verificación de consistencia de datos
+
+👉 Ejecutar:
+
+```bash
+python eda_analysis.py
+```
+
+---
+
+## 📈 Visualización de Datos
+
+Se generaron gráficos informativos utilizando **matplotlib**:
+
+* Top 10 equipos por puntos
+* Equipos que más subieron
+* Equipos que más bajaron
+
+👉 Ejecutar:
+
+```bash
+python visualizations.py
+```
+
+---
+
+## 🤖 Machine Learning
+
+Se implementó un modelo de regresión lineal para predecir los puntos en función del ranking.
+
+* Modelo utilizado: `LinearRegression`
+* Variable independiente: `rank`
+* Variable dependiente: `points`
+* Métrica de evaluación: MAE (Error Medio Absoluto)
+
+### 📌 Resultados del modelo
+
+* Error promedio aproximado: **19 puntos**
+* Se confirma una relación lineal entre ranking y puntos
+
+👉 Ejecutar:
+
+```bash
+python model.py
+```
+
+---
+
+## 📊 Insights del Análisis
+
+* Existe una relación inversa entre ranking y puntos
+* Los equipos mejor posicionados tienen mayor puntaje
+* Se identificaron selecciones con crecimiento significativo
+* El ranking refleja de forma consistente el rendimiento de los equipos
+* El modelo de Machine Learning confirma la tendencia observada
+
+---
+
+## 🚀 Ejecución del Proyecto
+
+### 1️⃣ Instalar dependencias
+
+```bash
+pip install pandas matplotlib scikit-learn plotly
+```
+
+### 2️⃣ Ejecutar en orden
+
+```bash
+python data_processing.py
+python eda_analysis.py
+python visualizations.py
+python model.py
+```
+
+---
+
+## 📚 Tecnologías utilizadas
+
+* Python
+* Pandas
+* Matplotlib
+* Scikit-learn
+
+---
+
+## 👥 Autor
+
+* Jorge Brito
+
+---
+
+## 📌 Conclusión
+
+Este proyecto demuestra cómo el análisis de datos permite identificar patrones relevantes en el ranking FIFA. Además, evidencia que técnicas de Machine Learning pueden ser utilizadas para predecir el comportamiento de variables deportivas, aportando valor analítico y predictivo al estudio.
+
+---
