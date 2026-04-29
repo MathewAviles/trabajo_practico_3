@@ -23,3 +23,10 @@ Este proyecto consiste en una API construida con FastAPI para analizar el datase
    - **Dinámica de Ranking:** Equipos como Escocia y Azerbaiyán mostraron el mayor crecimiento (+5 posiciones).
    - **Anomalías:** No se encontraron variaciones de puntos extremas, lo que sugiere consistencia en los datos.
 
+4. **Visualización de datos:**
+   - Se utilizó la librería **Plotly** para generar gráficos interactivos.
+   - **Mapa Global:** Se creó un mapa coroplético (`viz_mapa_global.html`) que muestra la intensidad de puntos por país.
+   - **Distribución por Confederación:** Un gráfico de caja (`viz_distribucion_asociacion.html`) para comparar el rendimiento entre confederaciones.
+   - **Top 10:** Gráfico de barras (`viz_top_10_equipos.html`) con las mejores selecciones según el ranking.
+
+
